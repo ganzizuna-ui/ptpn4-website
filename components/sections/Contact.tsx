@@ -40,7 +40,7 @@ export default function Contact() {
   }
 
   return (
-    <section id="kontak" className="py-16 sm:py-24 bg-white">
+    <section id="kontak" className="scroll-mt-20 py-16 sm:py-24 bg-white">
       <div className="container-custom">
         <div className="max-w-2xl mx-auto text-center mb-14">
           <span className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">

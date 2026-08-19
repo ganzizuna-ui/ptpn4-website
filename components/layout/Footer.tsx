@@ -115,17 +115,37 @@ export default function Footer() {
           <p className="text-xs text-zinc-500 text-center sm:text-left">
             &copy; {new Date().getFullYear()} PT Perkebunan Nusantara IV. Seluruh hak cipta dilindungi.
           </p>
-          <div className="flex items-center gap-3">
+                    <div className="flex items-center gap-3">
             {[Facebook, Instagram, Twitter, Youtube].map((Icon, i) => (
-              <a
+              
                 key={i}
                 href="#"
                 aria-label="Media sosial"
-                className="w-9 h-9 rounded-full bg-brand-800 flex items-center justify-center hover:bg-brand-700 transition-colors"
+                className="w-9 h-9 rounded-full bg-brand-800 flex items-center justify-center hover:bg-gold-500 transition-colors"
               >
                 <Icon className="w-4 h-4 text-zinc-300" />
               </a>
             ))}
+          </div>
+        </div>
+
+        {/* Kredit Pembuat & Tujuan Website */}
+        <div className="mt-6 pt-6 border-t border-brand-800/60 text-center">
+          <p className="text-xs text-zinc-500 leading-relaxed">
+            Website ini dikembangkan oleh{" "}
+            <span className="text-gold-500 font-semibold">
+              [Nama Anda / Tim Anda — isi di sini]
+            </span>{" "}
+            sebagai bentuk digitalisasi profil perusahaan PT Perkebunan
+            Nusantara IV, bertujuan mempermudah masyarakat, mitra, dan
+            calon investor memperoleh informasi resmi perusahaan secara
+            cepat, transparan, dan mudah diakses kapan saja.
+          </p>
+        </div>
+      </div>
+    </footer>
+  );
+}
           </div>
         </div>
       </div>

@@ -9,14 +9,14 @@ export default function Hero() {
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="animate-fade-up">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-zinc-100 text-zinc-700 text-xs font-semibold mb-6">
+            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gold-100 text-gold-600 text-xs font-semibold mb-6">
               <Leaf className="w-3.5 h-3.5" />
               BUMN Perkebunan Terbesar Indonesia
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-zinc-900 leading-[1.1] tracking-tight">
               Membangun Masa Depan{" "}
-              <span className="text-zinc-500">Perkebunan Indonesia</span>
+              <span className="text-brand-600">Perkebunan Indonesia</span>
             </h1>
 
             <p className="mt-6 text-base sm:text-lg text-zinc-600 max-w-xl leading-relaxed">
@@ -43,15 +43,15 @@ export default function Hero() {
 
             <div className="mt-12 grid grid-cols-3 gap-4 sm:gap-8 border-t border-zinc-200 pt-8">
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-zinc-900">30+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-brand-700">30+</p>
                 <p className="text-xs sm:text-sm text-zinc-500 mt-1">Unit Usaha</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-zinc-900">150K+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-gold-600">150K+</p>
                 <p className="text-xs sm:text-sm text-zinc-500 mt-1">Hektar Lahan</p>
               </div>
               <div>
-                <p className="text-2xl sm:text-3xl font-bold text-zinc-900">20K+</p>
+                <p className="text-2xl sm:text-3xl font-bold text-brand-700">20K+</p>
                 <p className="text-xs sm:text-sm text-zinc-500 mt-1">Karyawan</p>
               </div>
             </div>

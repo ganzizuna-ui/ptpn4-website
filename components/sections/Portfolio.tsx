@@ -3,11 +3,26 @@ import { MapPin } from "lucide-react";
 import { readData } from "@/lib/db";
 import type { PortfolioItem } from "@/lib/types";
 
+// Warna badge kategori dibuat berbeda-beda supaya kartu portofolio terasa
+// lebih hidup, sekaligus membantu pengunjung membedakan jenis unit usaha
+// sekilas pandang. Kategori yang tidak terdaftar di sini otomatis pakai
+// warna default (putih/netral).
+const categoryColors: Record<string, string> = {
+  "Kelapa Sawit": "bg-brand-600 text-white",
+  Karet: "bg-gold-500 text-white",
+  "Pabrik Pengolahan": "bg-sky-600 text-white",
+  Kemitraan: "bg-orange-500 text-white",
+};
+
+function getCategoryClass(category: string) {
+  return categoryColors[category] || "bg-white/90 text-zinc-900 backdrop-blur";
+}
+
 export default async function Portfolio() {
   const items = await readData<PortfolioItem>("portfolio.json");
 
   return (
-    <section id="portofolio" className="py-16 sm:py-24 bg-zinc-50">
+    <section id="portofolio" className="scroll-mt-20 py-16 sm:py-24 bg-gradient-to-b from-gold-50/40 to-zinc-50">
       <div className="container-custom">
         <div className="max-w-2xl mx-auto text-center mb-14">
           <span className="text-xs font-semibold tracking-widest text-zinc-500 uppercase">
@@ -38,7 +53,7 @@ export default async function Portfolio() {
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent" />
 
               <div className="absolute top-4 left-4">
-                <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur text-zinc-900 text-xs font-semibold">
+                <span className={`px-3 py-1 rounded-full text-xs font-semibold ${getCategoryClass(item.category)}`}>
                   {item.category}
                 </span>
               </div>

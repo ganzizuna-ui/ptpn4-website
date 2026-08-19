@@ -1,0 +1,44 @@
+[
+  {
+    "id": "1",
+    "title": "Unit Kebun Bah Jambi",
+    "category": "Kelapa Sawit",
+    "location": "Simalungun, Sumatera Utara",
+    "image": "https://images.unsplash.com/photo-1560493676-04071c5f467b?w=800&q=80"
+  },
+  {
+    "id": "2",
+    "title": "PKS Adolina",
+    "category": "Pabrik Pengolahan",
+    "location": "Serdang Bedagai, Sumatera Utara",
+    "image": "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80"
+  },
+  {
+    "id": "3",
+    "title": "Unit Kebun Balimbingan",
+    "category": "Kelapa Sawit",
+    "location": "Simalungun, Sumatera Utara",
+    "image": "https://images.unsplash.com/photo-1591086722183-e0b8d6a90c30?w=800&q=80"
+  },
+  {
+    "id": "4",
+    "title": "Program Plasma Petani",
+    "category": "Kemitraan",
+    "location": "Sumatera Utara",
+    "image": "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&q=80"
+  },
+  {
+    "id": "5",
+    "title": "Unit Kebun Marjandi",
+    "category": "Karet",
+    "location": "Simalungun, Sumatera Utara",
+    "image": "https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=800&q=80"
+  },
+  {
+    "id": "6",
+    "title": "Pabrik Karet Remah",
+    "category": "Pabrik Pengolahan",
+    "location": "Sumatera Utara",
+    "image": "https://images.unsplash.com/photo-1615811361523-6bd03d7748e7?w=800&q=80"
+  }
+]

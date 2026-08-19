@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "icon": "Leaf",
+    "title": "Kelapa Sawit",
+    "description": "Pengelolaan perkebunan kelapa sawit berkelanjutan dengan standar RSPO & ISPO untuk hasil CPO berkualitas tinggi."
+  },
+  {
+    "id": "2",
+    "icon": "TreePine",
+    "title": "Karet",
+    "description": "Budidaya dan pengolahan karet alam dengan teknologi modern untuk memenuhi kebutuhan industri nasional dan ekspor."
+  },
+  {
+    "id": "3",
+    "icon": "Factory",
+    "title": "Pabrik Pengolahan",
+    "description": "Fasilitas pabrik kelapa sawit (PKS) dan pabrik karet remah dengan kapasitas produksi besar dan efisien."
+  },
+  {
+    "id": "4",
+    "icon": "Users",
+    "title": "Kemitraan Petani",
+    "description": "Program kemitraan inti-plasma yang memberdayakan petani sekitar wilayah operasional perusahaan."
+  },
+  {
+    "id": "5",
+    "icon": "Leaf",
+    "title": "Riset & Pengembangan",
+    "description": "Inovasi bibit unggul dan teknologi budidaya untuk meningkatkan produktivitas lahan secara berkelanjutan."
+  },
+  {
+    "id": "6",
+    "icon": "Globe2",
+    "title": "Ekspor & Distribusi",
+    "description": "Jaringan distribusi dan ekspor hasil perkebunan ke berbagai negara mitra dagang di seluruh dunia."
+  }
+]

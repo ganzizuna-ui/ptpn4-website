@@ -1,0 +1,22 @@
+[
+  {
+    "id": "hero1",
+    "image": "/uploads/hero/hero-1-kebun-sawit.jpg",
+    "caption": "Perkebunan Kelapa Sawit"
+  },
+  {
+    "id": "hero2",
+    "image": "/uploads/hero/hero-2-kebun-teh.jpg",
+    "caption": "Perkebunan Teh"
+  },
+  {
+    "id": "hero3",
+    "image": "/uploads/hero/hero-3-pabrik-malam.jpg",
+    "caption": "Fasilitas Pengolahan"
+  },
+  {
+    "id": "hero4",
+    "image": "/uploads/hero/hero-4-panen-kopi.jpg",
+    "caption": "Panen Kopi"
+  }
+]

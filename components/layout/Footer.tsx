@@ -134,7 +134,10 @@ export default function Footer() {
           <p className="text-xs text-zinc-500 leading-relaxed">
             Website ini dikembangkan oleh{" "}
             <span className="text-gold-500 font-semibold">
-              [Nama Anda / Tim Anda — isi di sini]
+              [Muhammad Ibrahim
+              Akbar Nasution
+              Nazwa Aira
+              Nuraini]
             </span>{" "}
             sebagai bentuk digitalisasi profil perusahaan PT Perkebunan
             Nusantara IV, bertujuan mempermudah masyarakat, mitra, dan

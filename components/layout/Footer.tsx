@@ -133,7 +133,7 @@ export default function Footer() {
               Muhammad Ibrahim, Akbar Nasution, Nazwa Aira, Nuraini
             </span>{" "}
             sebagai bentuk digitalisasi profil perusahaan PT Perkebunan
-            Nusantara IV. 
+            Nusantara IV.
           </p>
         </div>
       </div>

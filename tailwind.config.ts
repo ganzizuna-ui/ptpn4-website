@@ -35,6 +35,7 @@ const config: Config = {
       animation: {
         "fade-up": "fadeUp 0.6s ease-out forwards",
         "page-fade": "pageFade 0.45s ease-out forwards",
+        "pulse-slow": "pulseSlow 6s ease-in-out infinite",
       },
       keyframes: {
         fadeUp: {
@@ -44,6 +45,10 @@ const config: Config = {
         pageFade: {
           "0%": { opacity: "0", transform: "translateY(12px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
+        },
+        pulseSlow: {
+          "0%, 100%": { opacity: "0.5", transform: "scale(1)" },
+          "50%": { opacity: "0.8", transform: "scale(1.08)" },
         },
       },
     },

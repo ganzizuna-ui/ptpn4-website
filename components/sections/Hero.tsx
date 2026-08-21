@@ -4,8 +4,19 @@ import HeroSlider from "./HeroSlider";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-zinc-50 to-white border-b border-zinc-100">
-      <div className="container-custom py-16 sm:py-24 lg:py-32">
+        <section className="relative overflow-hidden bg-gradient-to-b from-zinc-50 to-white border-b border-zinc-100">
+      {/* Bentuk dekoratif blur di belakang konten -- memperkuat kesan hijau
+          perkebunan & memberi efek visual tanpa mengganggu keterbacaan teks */}
+      <div
+        aria-hidden="true"
+        className="absolute -top-24 -left-24 w-96 h-96 rounded-full bg-brand-200/40 blur-3xl pointer-events-none animate-pulse-slow"
+      />
+      <div
+        aria-hidden="true"
+        className="absolute top-1/3 -right-32 w-96 h-96 rounded-full bg-gold-200/40 blur-3xl pointer-events-none"
+      />
+
+      <div className="container-custom py-16 sm:py-24 lg:py-32 relative">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           {/* Text Content */}
           <div className="animate-fade-up">

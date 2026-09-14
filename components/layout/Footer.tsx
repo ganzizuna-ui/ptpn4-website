@@ -14,7 +14,6 @@ const footerLinks = {
     { label: "Tentang Kami", href: "/tentang" },
     { label: "Visi & Misi", href: "/tentang#visi-misi" },
     { label: "Tata Kelola", href: "/tentang#tata-kelola" },
-    { label: "Karir", href: "/karir" },
   ],
   layanan: [
     { label: "Kelapa Sawit", href: "/#layanan" },

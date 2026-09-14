@@ -8,7 +8,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "PTPN IV Medan | Perkebunan Nusantara Indonesia",
+  title: "PTPN IV REGIONAL I MEDAN | Perkebunan Nusantara Indonesia",
   description:
     "PT Perkebunan Nusantara IV - Perusahaan perkebunan terkemuka di Indonesia, bergerak dalam industri kelapa sawit dan karet.",
 };

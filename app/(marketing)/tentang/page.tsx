@@ -40,18 +40,14 @@ export default function TentangPage() {
               Perjalanan Panjang Membangun Perkebunan Nusantara
             </h2>
             <p className="mt-6 text-zinc-600 leading-relaxed">
-              PT Perkebunan Nusantara IV merupakan salah satu perusahaan
-              perkebunan milik negara terbesar di Indonesia yang bergerak
-              dalam bidang usaha kelapa sawit dan karet. Berlokasi strategis
-              di wilayah Sumatera Utara, perusahaan telah beroperasi selama
-              puluhan tahun dan terus bertransformasi menjadi perusahaan
-              agribisnis modern yang berkelanjutan.
-            </p>
-            <p className="mt-4 text-zinc-600 leading-relaxed">
-              Dengan puluhan unit usaha yang tersebar di berbagai kabupaten,
-              perusahaan berkomitmen memberikan kontribusi nyata bagi
-              perekonomian daerah dan kesejahteraan masyarakat sekitar
-              wilayah operasional.
+              PT Perkebunan Nusantara IV pasca-aksi restrukturisasi atau yang sering disebut PalmCo adalah Subholding dari PT Perkebunan Nusantara III (Persero) dengan
+              komoditas utama kelapa sawit dan dibentuk melalui penggabungan PTPN V, VI dan XIII ke dalam PTPN IV sebagai entitas yang bertahan, 
+              serta pemisahan tidak murni PTPN III (Persero) ke dalam PTPN IV. Efektif bergabung pada 1 Desember 2023 sebagaimana tercantum dalam Akta Penggabungan Nomor 01 tanggal 1 Desember 2023 yang dibuat di hadapan Nanda Fauz Iwan, SH, M.Kn.,
+              Notaris di Jakarta Selatan dan telah mendapat bukti penerimaan pemberitahuan penggabungan Perseroan berdasarkan Surat Menteri Hukum dan Hak Asasi Manusia Nomor AHU-AH.01.03-0149887 tanggal 1 Desember 2023 perihal Penerimaan Pemberitahuan 
+              Penggabungan Perseroan PT Perkebunan Nusantara IV. Perubahan anggaran dasar Perseroan telah dinyatakan dalam Akta Nomor 02 tanggal 1 Desember 2023, yang dibuat di hadapan Nanda Fauz Iwan, SH, M.Kn., Notaris di Jakarta Selatan dan telah mendapat persetujuan dari 
+              Menteri Hukum dan Hak Asasi Manusia berdasarkan Keputusan Nomor AHU-0074926.AH.01.02 Tahun 2023 tanggal 1 Desember 2023 tentang Persetujuan Perubahan Anggaran Dasar Perseroan Terbatas PT Perkebunan Nusantara IV dan pemberitahuannya telah diterima oleh Menteri Hukum 
+              dan Hak Asasi Manusia berdasarkan Surat Nomor AHU-AH.01.03-0149887 tanggal 1 Desember 2023 perihal Penerimaan Pemberitahuan Perubahan Anggaran Dasar PT Perkebunan Nusantara IV. dan Akta Nomor 08 tanggal 1 Desember 2023 yang dibuat di hadapan Nanda Fauz Iwan, SH, M.Kn., 
+              Notaris di Jakarta Selatan dan telah mendapat persetujuan dari Menteri Hukum dan Hak Asasi Manusia berdasarkan Keputusan Nomor AHU-0075166.AH.01.02.2023 tanggal 7 Desember 2023 tentang Persetujuan Perubahan Anggaran Dasar Perseroan Terbatas PT Perkebunan Nusantara IV. Decorative palm 1Decorative palm 1.
             </p>
           </div>
           <div className="aspect-video rounded-2xl bg-brand-900 flex items-center justify-center">

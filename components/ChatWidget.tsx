@@ -1,18 +1,31 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { MessageCircle, X, Send, Loader2, Leaf } from "lucide-react";
+import { MessageCircle, X, Send, Loader2, Leaf, CheckCircle2 } from "lucide-react";
 
 type ChatMessage = {
   role: "user" | "assistant";
   content: string;
 };
 
+// PENTING: teks ini harus SAMA PERSIS dengan FALLBACK_MESSAGE di
+// app/api/chatbot/route.ts -- dipakai untuk mendeteksi kapan menampilkan
+// form "tinggalkan kontak" ke pengunjung.
+const FALLBACK_MESSAGE =
+  "Baik, untuk pertanyaan Anda seputar perusahaan ini, nanti akan di balas secara personal oleh Admin kami dalam jam operasional minimal 2x24 jam 🙏🏻";
+
 const WELCOME_MESSAGE: ChatMessage = {
   role: "assistant",
   content:
-    "Halo! Saya asisten virtual PTPN IV. Ada yang ingin ditanyakan seputar layanan, unit usaha, atau informasi perusahaan kami?",
+    "Halo! Saya asisten virtual PTPN IV. Silakan pilih salah satu pertanyaan di bawah, atau tulis pertanyaan Anda sendiri.",
 };
+
+const QUICK_QUESTIONS = [
+  "Apa saja layanan / bidang usaha PTPN IV?",
+  "Di mana lokasi kantor PTPN IV?",
+  "Bagaimana cara menghubungi perusahaan?",
+  "Apa saja unit usaha/portofolio PTPN IV?",
+];
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
@@ -21,19 +34,24 @@ export default function ChatWidget() {
   const [loading, setLoading] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
+  // Pertanyaan yang belum terjawab & menunggu diisi nama+kontak pengunjung
+  const [pendingQuestion, setPendingQuestion] = useState<string | null>(null);
+  const [leadName, setLeadName] = useState("");
+  const [leadContact, setLeadContact] = useState("");
+  const [leadSubmitting, setLeadSubmitting] = useState(false);
+
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages, open]);
+  }, [messages, open, pendingQuestion]);
 
-  async function sendMessage(e: React.FormEvent) {
-    e.preventDefault();
-    const text = input.trim();
+  async function sendText(text: string) {
     if (!text || loading) return;
 
     const nextMessages: ChatMessage[] = [...messages, { role: "user", content: text }];
     setMessages(nextMessages);
     setInput("");
     setLoading(true);
+    setPendingQuestion(null);
 
     try {
       const res = await fetch("/api/chatbot", {
@@ -45,14 +63,15 @@ export default function ChatWidget() {
         }),
       });
       const data = await res.json();
+      const replyText: string = res.ok ? data.reply : data.error || "Maaf, terjadi kesalahan.";
 
-      setMessages((prev) => [
-        ...prev,
-        {
-          role: "assistant",
-          content: res.ok ? data.reply : data.error || "Maaf, terjadi kesalahan.",
-        },
-      ]);
+      setMessages((prev) => [...prev, { role: "assistant", content: replyText }]);
+
+      // Kalau balasannya adalah pesan fallback, tampilkan form kontak
+      // supaya admin bisa menindaklanjuti pertanyaan ini secara personal.
+      if (replyText === FALLBACK_MESSAGE) {
+        setPendingQuestion(text);
+      }
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -62,6 +81,56 @@ export default function ChatWidget() {
       setLoading(false);
     }
   }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    sendText(input.trim());
+  }
+
+  async function handleLeadSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    if (!leadName.trim() || !leadContact.trim() || !pendingQuestion || leadSubmitting) return;
+
+    setLeadSubmitting(true);
+    try {
+      const res = await fetch("/api/chatbot-lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: leadName.trim(),
+          contact: leadContact.trim(),
+          question: pendingQuestion,
+        }),
+      });
+
+      if (res.ok) {
+        setMessages((prev) => [
+          ...prev,
+          {
+            role: "assistant",
+            content: `Terima kasih, ${leadName.trim()}! Pertanyaan Anda sudah kami catat. Admin kami akan menghubungi Anda melalui ${leadContact.trim()} dalam waktu maksimal 2x24 jam pada jam operasional. 🙏🏻`,
+          },
+        ]);
+        setPendingQuestion(null);
+        setLeadName("");
+        setLeadContact("");
+      } else {
+        setMessages((prev) => [
+          ...prev,
+          { role: "assistant", content: "Maaf, gagal menyimpan data Anda. Silakan coba lagi." },
+        ]);
+      }
+    } catch {
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: "Maaf, koneksi bermasalah. Coba lagi sebentar lagi." },
+      ]);
+    } finally {
+      setLeadSubmitting(false);
+    }
+  }
+
+  const showQuickQuestions = messages.length === 1 && !loading && !pendingQuestion;
 
   return (
     <>
@@ -78,7 +147,7 @@ export default function ChatWidget() {
       </button>
 
       {open && (
-        <div className="fixed bottom-24 right-5 z-50 w-[min(360px,calc(100vw-2.5rem))] h-[min(500px,calc(100vh-9rem))] bg-white rounded-2xl shadow-2xl border border-zinc-200 flex flex-col overflow-hidden animate-fade-up">
+        <div className="fixed bottom-24 right-5 z-50 w-[min(360px,calc(100vw-2.5rem))] h-[min(560px,calc(100vh-9rem))] bg-white rounded-2xl shadow-2xl border border-zinc-200 flex flex-col overflow-hidden animate-fade-up">
           <div className="bg-brand-900 px-4 py-3.5 flex items-center gap-2.5 flex-shrink-0">
             <div className="w-8 h-8 rounded-full bg-gold-500 flex items-center justify-center flex-shrink-0">
               <Leaf className="w-4 h-4 text-brand-950" />
@@ -106,6 +175,7 @@ export default function ChatWidget() {
                 </div>
               </div>
             ))}
+
             {loading && (
               <div className="flex justify-start">
                 <div className="rounded-2xl rounded-bl-sm bg-white border border-zinc-200 px-3.5 py-2.5">
@@ -113,9 +183,59 @@ export default function ChatWidget() {
                 </div>
               </div>
             )}
+
+            {showQuickQuestions && (
+              <div className="flex flex-col gap-2 pt-1">
+                {QUICK_QUESTIONS.map((q) => (
+                  <button
+                    key={q}
+                    onClick={() => sendText(q)}
+                    className="text-left text-sm px-3.5 py-2.5 rounded-xl border border-brand-200 bg-white text-brand-800 hover:bg-brand-50 hover:border-brand-700 transition-colors"
+                  >
+                    {q}
+                  </button>
+                ))}
+              </div>
+            )}
+
+            {/* Form tinggalkan kontak, muncul saat chatbot tidak bisa jawab */}
+            {pendingQuestion && (
+              <form
+                onSubmit={handleLeadSubmit}
+                className="bg-white border border-brand-200 rounded-xl p-3.5 space-y-2.5"
+              >
+                <p className="text-xs font-semibold text-brand-800 flex items-center gap-1.5">
+                  <CheckCircle2 className="w-3.5 h-3.5" />
+                  Tinggalkan kontak Anda
+                </p>
+                <input
+                  value={leadName}
+                  onChange={(e) => setLeadName(e.target.value)}
+                  placeholder="Nama Anda"
+                  disabled={leadSubmitting}
+                  required
+                  className="w-full px-3 py-2 rounded-lg border border-zinc-300 text-sm outline-none focus:border-brand-700 disabled:bg-zinc-100"
+                />
+                <input
+                  value={leadContact}
+                  onChange={(e) => setLeadContact(e.target.value)}
+                  placeholder="No. WhatsApp atau Email"
+                  disabled={leadSubmitting}
+                  required
+                  className="w-full px-3 py-2 rounded-lg border border-zinc-300 text-sm outline-none focus:border-brand-700 disabled:bg-zinc-100"
+                />
+                <button
+                  type="submit"
+                  disabled={leadSubmitting}
+                  className="w-full py-2 rounded-lg bg-brand-900 text-white text-sm font-semibold hover:bg-brand-800 disabled:opacity-50 transition-colors"
+                >
+                  {leadSubmitting ? "Mengirim..." : "Kirim ke Admin"}
+                </button>
+              </form>
+            )}
           </div>
 
-          <form onSubmit={sendMessage} className="flex-shrink-0 border-t border-zinc-200 p-3 flex items-center gap-2 bg-white">
+          <form onSubmit={handleSubmit} className="flex-shrink-0 border-t border-zinc-200 p-3 flex items-center gap-2 bg-white">
             <input
               value={input}
               onChange={(e) => setInput(e.target.value)}
